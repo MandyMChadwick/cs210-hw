@@ -1,6 +1,6 @@
 # cse210-ww-student-template
 
-This is no longer starter code it was alter by mandy
+This is no longer starter code it was altered by Mandy Chadwick
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
