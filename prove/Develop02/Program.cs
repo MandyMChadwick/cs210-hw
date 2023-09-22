@@ -16,7 +16,7 @@ class Program
             int intResponse = int.Parse(response);
             if (intResponse == 1)
             {
-                // Write.Writing();
+                Entry.Writing();
                 Console.WriteLine("You Chose 1");
             }
             else if (intResponse == 2)
