@@ -10,6 +10,14 @@ public class Journal
 
     public void DisplayAll()
     {
+        Console.WriteLine("Give a File Name");
+        string file = Console.ReadLine();
+        List<Entry> newEntry = LoadFromFile(file);
+        foreach (Entry e in newEntry)
+        {
+            Console.WriteLine($"{e._promptText} {e._entryText} {e._date}");
+        }
+
     }
 
     public void SaveToFile(string file)
