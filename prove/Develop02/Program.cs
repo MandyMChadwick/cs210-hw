@@ -4,44 +4,64 @@ class Program
 {
     static void Main(string[] args)
     {
-        bool running = true; // a boolean variable to control the loop
-        while (running) // a while loop that runs until running is false
+        Journal journal = new Journal(); // Create an instance of the Journal class
+
+        bool running = true;
+
+        while (running)
         {
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
-            Console.WriteLine("3. Load");
-            Console.WriteLine("4. Save");
+            Console.WriteLine("3. Save");
+            Console.WriteLine("4. Load");
             Console.WriteLine("5. Quit");
+
             string response = Console.ReadLine();
-            int intResponse = int.Parse(response);
-            if (intResponse == 1)
+            int intResponse;
+
+            if (int.TryParse(response, out intResponse))
             {
-                Entry entry = new Entry(); // Create an instance of the Entry class
-                entry.Display(); // Call the Display method on the instance
-                // Write.Writing();
-                Console.WriteLine("You Chose 1");
-            }
-            else if (intResponse == 2)
-            {
-                //  Displaying.Display();
-                Console.WriteLine("You Chose 2");
-            }
-            else if (intResponse == 3)
-            {
-                Console.WriteLine("You Chose 3");
-            }
-            else if (intResponse == 4)
-            {
-                Console.WriteLine("You Chose 4");
-            }
-            else if (intResponse == 5)
-            {
-                Console.WriteLine("You Chose 5");
-                running = false; // set running to false to exit the loop
+                switch (intResponse)
+                {
+                    case 1:
+                        Entry entry = new Entry();
+                        Console.WriteLine("Write your entry:");
+                        entry._entryText = Console.ReadLine();
+                        journal.AddEntry(entry);
+                        Console.WriteLine("Entry added.");
+                        break;
+
+                    case 2:
+                        Console.WriteLine("All Entries:");
+                        journal.DisplayAll();
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Enter the file path to save entries:");
+                        string saveFile = Console.ReadLine();
+                        journal.SaveToFile(saveFile);
+                        Console.WriteLine("Entries saved.");
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Enter the file path to load entries:");
+                        string loadFile = Console.ReadLine();
+                        journal.LoadFromFile(loadFile);
+                        Console.WriteLine("Entries loaded.");
+                        break;
+
+                    case 5:
+                        running = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Please choose a number between 1 and 5.");
+                        break;
+                }
             }
             else
             {
-                Console.WriteLine("You didn't choose a number between 1-5");
+                Console.WriteLine("Invalid input. Please enter a valid number.");
             }
         }
     }

@@ -1,91 +1,44 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+
 public class Journal
 {
     public List<Entry> _entries;
+
+    public Journal()
+    {
+        _entries = new List<Entry>();
+    }
+
     public void AddEntry(Entry newEntry)
     {
+        _entries.Add(newEntry);
     }
 
     public void DisplayAll()
     {
-        Console.WriteLine("Give a File Name");
-        string file = Console.ReadLine();
-        List<Entry> newEntry = LoadFromFile(file);
-        foreach (Entry e in newEntry)
+        foreach (Entry entry in _entries)
         {
-            Console.WriteLine($"{e._promptText} {e._entryText} {e._date}");
+            Console.WriteLine($"{entry._date} - {entry._promptText}: {entry._entryText}");
         }
-
     }
 
     public void SaveToFile(string file)
-
     {
-        Console.WriteLine("Please enter a file path to save your journal entry:"); // ask the user for a file path
-
-        string path = Console.ReadLine(); // read the user input
-
-        if (!File.Exists(path)) // check if the file exists
-
+        using (StreamWriter writer = new StreamWriter(file))
         {
-
-            File.Create(path); // create the file if not
-
-            Console.WriteLine("The file was created successfully.");
-
-        }
-
-        else
-
-        {
-
-            Console.WriteLine("The file already exists.");
-
+            foreach (Entry entry in _entries)
+            {
+                writer.WriteLine(entry.FormatEntry());
+            }
         }
     }
 
-    public static List<Entry> LoadFromFile(string file)
+    public void LoadFromFile(string file)
     {
-        List<Entry> entries = new List<Entry>();
-        Console.WriteLine("Enter a file name: ");
-        file = Console.ReadLine();
-        string[] lines = System.IO.File.ReadAllLines(file);
-        foreach (string line in lines)
-        //  Console.WriteLine(line);
-        {
-            string[] parts = line.Split("~~");
-
-            Entry newEntry = new Entry();
-            newEntry._entryText = parts[0];
-            newEntry._entryText = parts[1];
-            newEntry._date = parts[2];
-            entries.Add(newEntry);
-
-
-        }
-        return entries;
+        // Load entries from a file and add them to _entries
+        // Implement this method as you have done previously
     }
 }
-/*    public static List<Person> ReadFromFile()
-    {
-        Console.WriteLine("Reading List From File...");
-        List<Person> people = new List<Person>();
-        string filename = "people.txt";
 
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        foreach (string line in lines)
-        //  Console.WriteLine(line);
-        {
-            string[] parts = line.Split("~~");
-
-            Person newPerson = new Person();
-            newPerson._firstName = parts[0];
-            newPerson._lastName = parts[1];
-            newPerson._age = int.Parse(parts[2]);
-            people.Add(newPerson);
-
-        }
-        return people;
-    }*/
