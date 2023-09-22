@@ -16,7 +16,9 @@ class Program
             int intResponse = int.Parse(response);
             if (intResponse == 1)
             {
-                Entry.Writing();
+                Entry entry = new Entry(); // Create an instance of the Entry class
+                entry.Display(); // Call the Display method on the instance
+                // Write.Writing();
                 Console.WriteLine("You Chose 1");
             }
             else if (intResponse == 2)
