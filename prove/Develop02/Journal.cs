@@ -37,8 +37,45 @@ public class Journal
 
     public void LoadFromFile(string file)
     {
-        // Load entries from a file and add them to _entries
-        // Implement this method as you have done previously
+        if (!File.Exists(file))
+        {
+            Console.WriteLine("File not found.");
+            return;
+        }
+
+        try
+        {
+            using (StreamReader reader = new StreamReader(file))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] parts = line.Split(new string[] { "~~" }, StringSplitOptions.None);
+
+                    if (parts.Length == 3)
+                    {
+                        Entry loadedEntry = new Entry
+                        {
+                            _date = parts[0],
+                            _promptText = parts[1],
+                            _entryText = parts[2]
+                        };
+                        _entries.Add(loadedEntry);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid entry format: {line}");
+                    }
+                }
+            }
+
+            Console.WriteLine("Entries loaded successfully.");
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine($"An error occurred while reading the file: {e.Message}");
+        }
     }
+
 }
 
