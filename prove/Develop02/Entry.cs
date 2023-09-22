@@ -24,7 +24,7 @@ public class Entry
 
         _entryText = Console.ReadLine();
 
-        Console.WriteLine($"This is the answer you gave{_entryText}.");
+        Console.WriteLine($"This is the answer you gave {_entryText}.");
     }
 
 
