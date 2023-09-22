@@ -23,10 +23,10 @@ class Program
             {
                 switch (intResponse)
                 {
+
                     case 1:
                         Entry entry = new Entry();
-                        Console.WriteLine("Write your entry:");
-                        entry._entryText = Console.ReadLine();
+                        entry.Display(); // Display the entry, which will include a random prompt
                         journal.AddEntry(entry);
                         Console.WriteLine("Entry added.");
                         break;
