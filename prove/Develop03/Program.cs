@@ -4,7 +4,17 @@ class Program
 
     static void Main(string[] args)
     {
-
+        Console.WriteLine(@",         ,
+|\\ ////|
+| \\\V/// |
+|  |~~~|  |
+|  |===|  |
+|  |L  |  |
+|  | D |  |
+ \ |  S| /
+  \|===|/
+   '---'");
+        Console.WriteLine(" Welcome to Scripture Memorize Central!!!");
         Reference reference = new Reference("Jacob", 5, 3);
 
 
