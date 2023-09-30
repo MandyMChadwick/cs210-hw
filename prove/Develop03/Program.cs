@@ -1,11 +1,11 @@
 
 class Program
-{
+{// image from https://www.asciiart.eu/books/books#google_vignette;
 
     static void Main(string[] args)
     {
         Console.WriteLine(@",         ,
-|\\ ////|
+|\\ ////| 
 | \\\V/// |
 |  |~~~|  |
 |  |===|  |
