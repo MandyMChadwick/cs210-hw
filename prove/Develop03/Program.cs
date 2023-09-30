@@ -15,7 +15,7 @@ class Program
   \|===|/
    '---'");
         Console.WriteLine(" Welcome to Scripture Memorize Central!!!");
-        Reference reference = new Reference("Jacob", 5, 3);
+        Reference reference = new Reference("Jacob", 5, 3, null);
 
 
 
