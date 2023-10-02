@@ -25,7 +25,7 @@ public class Assignment
 
 
 
-    string GetSummary()
+    public string GetSummary()
     {
         return _studentName + " - " + _topic;
     }
