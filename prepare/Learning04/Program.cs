@@ -11,6 +11,10 @@ class Program
         Console.WriteLine(assignmentTwo.GetSummary());
         Console.WriteLine(assignmentTwo.GetHomeworkList());
 
+        WritingAssignment assignmentThree = new WritingAssignment("Siera Chadwick", "Nature", "Why Recycle?");
+        Console.WriteLine(assignmentThree.GetSummary());
+        Console.WriteLine(assignmentThree.GetWritingInformation());
+
 
     }
 }
