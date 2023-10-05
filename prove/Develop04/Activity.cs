@@ -11,13 +11,14 @@ class Activity
 
     public void DisplayStartingMessage()
     {
-
+        string activityName = "activity";
+        Console.Write($"Welcome to the {activityName} ");
     }
 
 
     public void DisplayEndingMessage()
     {
-
+        Console.WriteLine("You have completed {activity} {duration}");
     }
 
     public void ShowSpinner(int seconds)
