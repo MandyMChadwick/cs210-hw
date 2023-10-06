@@ -23,6 +23,55 @@ class Activity
     public void DisplayEndingMessage()
     {
         Console.WriteLine($"You have completed {_activityName}. Thank you.");//in {_duration} seconds
+
+
+
+        string hand1 = @"
+          _.-/`)
+         // / / )
+      .=// / / / )
+     //`/ / / / /
+    // /     ` /
+   ||   Thank /
+    \\       /
+     ))    .'
+    //    /
+         /";
+
+        string hand2 = @"
+       _.-._
+     /| | | |_
+     || | | | |
+     || | | | |
+    _||     ` |
+   \\`\ you!  ;
+    \\        |
+     \\      /
+     | |    |
+     | |    |";
+
+        int animationDurationInSeconds = 5; // Adjust this to set the animation duration
+        int frameDurationInMilliseconds = 500; // Adjust this to set the frame duration
+
+        int numberOfFrames = animationDurationInSeconds * 1000 / frameDurationInMilliseconds;
+
+        for (int i = 0; i < numberOfFrames; i++)
+        {
+            Console.Clear(); // Clear the console to redraw the frame
+            if (i % 2 == 0)
+            {
+                Console.WriteLine(hand1);
+            }
+            else
+            {
+                Console.WriteLine(hand2);
+            }
+
+            Thread.Sleep(frameDurationInMilliseconds); // Delay between frames
+        }
+
+
+
     }
 
     public void ShowSpinner(int seconds)
