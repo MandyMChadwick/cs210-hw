@@ -10,7 +10,7 @@ class BreathingActivity : Activity
 
     public override void Run()
     {
-        base.Run();
+        base.DisplayStartingMessage();
 
         Console.WriteLine("Get ready. Press enter to start the breathing exercise.");
         Console.ReadLine();
@@ -45,6 +45,6 @@ class BreathingActivity : Activity
 
         }
 
-        Console.WriteLine("Breathing Activity Completed.");
+        base.DisplayEndingMessage();
     }
 }

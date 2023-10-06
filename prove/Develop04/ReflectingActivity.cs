@@ -24,18 +24,15 @@ class ReflectingActivity : Activity
             "Why was this experience meaningful to you?",
             "Have you ever done anything like this before?",
             "How did you get started?",
-            "How did you feel when it was complete?",
-            "What made this time different than other times when you were not as successful?",
-            "What is your favorite thing about this experience?",
-            "What could you learn from this experience that applies to other situations?",
-            "What did you learn about yourself through this experience?",
-            "How can you keep this experience in mind in the future?"
+
         };
+
+
     }
 
     public override void Run()
     {
-        base.Run();
+        base.DisplayStartingMessage();
 
         Console.WriteLine("Get ready. Press enter to continue.");
         Console.ReadLine();
@@ -53,24 +50,26 @@ class ReflectingActivity : Activity
             Console.ReadLine();
         }
 
-        Console.WriteLine("Reflection Activity Completed.");
+        base.DisplayEndingMessage(); ;
     }
 
     private void DisplayPrompt()
     {
         string randomPrompt = GetRandomPrompt();
         _prompts.Add(randomPrompt);
-        Console.WriteLine("Random Prompt: " + randomPrompt);
+        Console.WriteLine("Ponder: " + randomPrompt);
     }
 
     private void DisplayQuestions()
     {
         foreach (string question in _questions)
         {
-            Console.WriteLine("Random Question: " + question);
-            Console.WriteLine("Pause for a few seconds...");
+            Console.WriteLine("Ponder this: " + question);
+
             ShowSpinner(3); // Pause for 3 seconds
         }
+
+
     }
 
     private string GetRandomPrompt()
@@ -86,4 +85,5 @@ class ReflectingActivity : Activity
         int index = rnd.Next(_questions.Count);
         return _questions[index];
     }
+
 }

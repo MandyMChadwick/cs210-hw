@@ -22,14 +22,29 @@ class Activity
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"You have completed {_activityName} in {_duration} seconds.");
+        Console.WriteLine($"You have completed {_activityName}. Thank you.");//in {_duration} seconds
     }
 
     public void ShowSpinner(int seconds)
     {
-        int spinDuration = seconds * 1000; // Convert seconds to milliseconds
-        Console.WriteLine("Spinning...");
-        Thread.Sleep(spinDuration);
+        var _animationStrings = new List<string>
+           {
+               "|",
+               "/",
+               "-",
+               "\\"
+           };
+        int animationIndex = 0;
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+
+        while (DateTime.Now < endTime)
+        {
+            Console.Write("\r" + _animationStrings[animationIndex]);
+            animationIndex = (animationIndex + 1) % _animationStrings.Count;
+            Thread.Sleep(250); // Sleep for 250 milliseconds
+        }
+
+        Console.Write("\r");
     }
 
     public void ShowCountDown(int seconds)

@@ -23,7 +23,7 @@ class ListingActivity : Activity
 
     public override void Run()
     {
-        base.Run();
+        base.DisplayStartingMessage();
 
         Console.WriteLine("Get ready. Press enter to start the Blessing Activity.");
         Console.ReadLine();
@@ -46,7 +46,7 @@ class ListingActivity : Activity
             Thread.Sleep(1000);
         }
 
-        Console.WriteLine("Blessing Activity Completed.");
+        base.DisplayEndingMessage();
     }
 
     private void DisplayRandomQuestion()
