@@ -50,14 +50,14 @@ class Activity
      | |    |
      | |    |";
 
-        int animationDurationInSeconds = 5; // Adjust this to set the animation duration
-        int frameDurationInMilliseconds = 500; // Adjust this to set the frame duration
+        int animationDurationInSeconds = 3;
+        int frameDurationInMilliseconds = 500;
 
         int numberOfFrames = animationDurationInSeconds * 1000 / frameDurationInMilliseconds;
 
         for (int i = 0; i < numberOfFrames; i++)
         {
-            Console.Clear(); // Clear the console to redraw the frame
+            Console.Clear();
             if (i % 2 == 0)
             {
                 Console.WriteLine(hand1);
@@ -67,7 +67,7 @@ class Activity
                 Console.WriteLine(hand2);
             }
 
-            Thread.Sleep(frameDurationInMilliseconds); // Delay between frames
+            Thread.Sleep(frameDurationInMilliseconds);
         }
 
 
