@@ -24,7 +24,8 @@ class Activity
     {
         Console.WriteLine($"You have completed {_activityName}. Thank you.");//in {_duration} seconds
 
-
+        // hand art from https://www.asciiart.eu/religion/christianity
+        // animation instructions from Google. 
 
         string hand1 = @"
           _.-/`)
