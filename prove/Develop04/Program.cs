@@ -58,7 +58,7 @@ class Program
     {
         string activityName = "Listing Activity";
         string description = "This activity will involve listing items or thoughts during a specified duration.";
-        int durationInSeconds = 20;
+        int durationInSeconds = 30;
 
         ListingActivity listingActivity = new ListingActivity(activityName, description, durationInSeconds);
         listingActivity.Run();

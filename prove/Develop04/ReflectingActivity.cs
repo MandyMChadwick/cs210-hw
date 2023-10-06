@@ -64,9 +64,9 @@ class ReflectingActivity : Activity
     {
         foreach (string question in _questions)
         {
-            Console.WriteLine("Ponder this: " + question);
+            Console.WriteLine("Ponder deeper about this: " + question);
 
-            ShowSpinner(3); // Pause for 3 seconds
+            ShowSpinner(10); // Pause for 3 seconds
         }
 
 
