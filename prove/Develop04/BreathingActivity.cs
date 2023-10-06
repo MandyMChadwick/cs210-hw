@@ -1,16 +1,50 @@
-class BreathingActivity
+using System;
+using System.Threading;
+
+class BreathingActivity : Activity
 {
-
-    public BreathingActivity()
+    public BreathingActivity(string activityName, string description, int duration)
+        : base(activityName, description, duration)
     {
-        Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
-
-        Console.WriteLine("How long, in seconds, would you like for your session?");
-        String timeInSeconds = Console.ReadLine();
     }
 
-    public void run()
+    public override void Run()
     {
+        base.Run();
 
+        Console.WriteLine("Get ready. Press enter to start the breathing exercise.");
+        Console.ReadLine();
+
+        Console.WriteLine("Breathing Activity Started.");
+
+        int durationInSeconds = base._duration;
+        DateTime endTime = DateTime.Now.AddSeconds(durationInSeconds);
+
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe out...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe out...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe out...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe out...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe out...");
+            ShowCountDown(3);
+
+        }
+
+        Console.WriteLine("Breathing Activity Completed.");
     }
 }
