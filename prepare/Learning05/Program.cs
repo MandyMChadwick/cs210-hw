@@ -14,6 +14,9 @@ class Program
         Circle s3 = new Circle("Green", 6);
         Shapes.Add(s3);
 
+        Triangle s4 = new Triangle("Yellow", 4, 5);
+        Shapes.Add(s4);
+
         foreach (Shape s in Shapes)
         {
             string color = s.GetColor();
