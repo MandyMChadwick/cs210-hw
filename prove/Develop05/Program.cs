@@ -19,7 +19,8 @@ class Program
             if (choice == "1")
             {
                 Console.WriteLine("You chose create a new goal");
-                // StartBreathingActivity();
+                GoalManager manager = new GoalManager();
+                manager.CreateGoal();
             }
             else if (choice == "2")
             {
@@ -30,12 +31,15 @@ class Program
             {
                 Console.WriteLine("You chose to save your goals");
                 //StartListingActivity();
+                GoalManager manager = new GoalManager();
+                manager.SaveGoals();
             }
 
             else if (choice == "4")
             {
                 Console.WriteLine("You chose to load your goals");
-                //StartListingActivity();
+                GoalManager manager = new GoalManager();
+                manager.LoadGoals();
             }
 
             else if (choice == "5")
