@@ -81,11 +81,11 @@ public class ChecklistGoal : Goal
             _status = true;
             points = points + _bonusPoints;
 
-            Console.WriteLine($"You are doing great you have {points} points!");
+            Console.WriteLine($"You are doing great you have {points} points");
         }
         else
         {
-            Console.WriteLine($"You have achieved Your Goals and have {GetPoints()} points");
+            Console.WriteLine($"Congratulations for finishing! You have {GetPoints()} points");
         }
     }
 

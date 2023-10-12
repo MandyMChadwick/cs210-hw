@@ -33,7 +33,7 @@ public class EternalGoal : Goal
     }
     public override void RecordGoalEvent(List<Goal> goals)
     {
-        Console.WriteLine($"Congratulations! You have earned {GetPoints()} points!");
+        Console.WriteLine($"Your doing great! you have {GetPoints()} points");
     }
 
 
