@@ -4,13 +4,9 @@ using System.IO;
 public class GoalManagement
 
 {
-    // Attributes
     private List<Goal> _goals = new List<Goal>();
     private int _totalPoints;
-
-
-    // Constructors
-    public GoalManagement()
+    public GoalManagement() // initialize points
     {
         _totalPoints = 0;
     }
@@ -22,6 +18,7 @@ public class GoalManagement
     {
         return _totalPoints;
     }
+
     public void AddPoints(int points)
     {
         _totalPoints += points;
@@ -39,7 +36,6 @@ public class GoalManagement
         return _goals;
     }
 
-    // Methods
     public void ListGoals()
     {
         if (_goals.Count() > 0)
@@ -47,7 +43,7 @@ public class GoalManagement
             Console.WriteLine("Your Goals:");
 
             int index = 1;
-            // Loop though goals list
+
             foreach (Goal goal in _goals)
             {
                 goal.ListGoal(index);
