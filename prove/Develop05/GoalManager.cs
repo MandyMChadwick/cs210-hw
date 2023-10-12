@@ -58,14 +58,14 @@ public class GoalManager
     }
     public void SaveGoals()
     {
-        using (StreamWriter writer = new StreamWriter("goals.csv"))
+        using (StreamWriter writer = new StreamWriter("goals.txt"))
         {
             foreach (Goal goal in goals)
             {
                 writer.WriteLine(goal.GetStringRepresentation());
             }
         }
-        Console.WriteLine("Goals saved to goals.csv");
+        Console.WriteLine("Goals saved to goals.txt");
     }
     public void LoadGoals()
     {
