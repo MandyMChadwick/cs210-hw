@@ -68,6 +68,17 @@ class Program
                                 goals.AddGoal(checkGoal);
                                 goalInput = 5;
                                 break;
+                            case 4:// Other Goal
+                                Console.WriteLine("Give your goal a name");
+                                name = Console.ReadLine();
+                                Console.WriteLine("Describe your goal");
+                                description = Console.ReadLine();
+                                Console.WriteLine("List the points for this goal");
+                                points = int.Parse(Console.ReadLine());
+                                OtherGoal otherGoal = new OtherGoal("Check List Goal:", name, description, points);
+                                goals.AddGoal(otherGoal);
+                                goalInput = 5;
+                                break;
                             default:
                                 Console.WriteLine("Enter a valid option");
                                 break;
