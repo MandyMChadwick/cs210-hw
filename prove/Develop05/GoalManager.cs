@@ -52,14 +52,14 @@ public class GoalManagement
         }
         else
         {
-            Console.WriteLine("You have no goals");
+            Console.WriteLine("You have no goals ");
         }
     }
     public void RecordGoalEvent()
     {
         ListGoals();
 
-        Console.Write("What did you accomplish?");
+        Console.Write("What did you accomplish? ");
         int select = int.Parse(Console.ReadLine()) - 1;
 
         int goalPoints = GetGoalsList()[select].GetPoints();
@@ -67,11 +67,11 @@ public class GoalManagement
 
         GetGoalsList()[select].RecordGoalEvent(_goals);
 
-        Console.WriteLine($"You have{GetTotalPoints()} points!");
+        Console.WriteLine($"You have {GetTotalPoints()} points!");
     }
     public void SaveGoals()
     {
-        Console.Write("Name your file");
+        Console.Write("Name your file: ");
         string userInput = Console.ReadLine();
         string userFileName = userInput + ".txt";
 
@@ -89,7 +89,7 @@ public class GoalManagement
 
     public void LoadGoals()
     {
-        Console.Write("What is your file name?");
+        Console.Write("What is your file name? ");
         string userInput = Console.ReadLine();
         string userFileName = userInput + ".txt";
 
