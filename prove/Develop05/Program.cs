@@ -90,7 +90,7 @@ class Program
                     break;
                 case 2:
                     Console.Clear();
-                    Console.Write($"\n*** You currently have {goals.GetTotalPoints()} points! ***\n");
+                    Console.Write($"You have {goals.GetTotalPoints()} points");
                     goals.ListGoals();
                     break;
                 case 3:
@@ -100,7 +100,7 @@ class Program
                 case 4:
 
                     Console.Clear();
-                    Console.Write($"\n*** You currently have {goals.GetTotalPoints()} points! ***\n");
+                    Console.Write($"You have {goals.GetTotalPoints()} ");
                     goals.LoadGoals();
                     break;
                 case 5:
@@ -111,7 +111,9 @@ class Program
                     break;
                 case 6:
 
-                    Console.WriteLine("Thank You and Good Bye!");
+                    Console.WriteLine("****************************************");
+                    Console.WriteLine("Thanks for using Eternal Quest! good bye.");
+                    Console.WriteLine("****************************************");
                     break;
                 default:
                     Console.WriteLine($"Enter a Valid Option");
