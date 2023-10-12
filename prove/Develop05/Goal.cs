@@ -1,21 +1,44 @@
+using System;
+
 public abstract class Goal
 {
-    private string _shortName;
+    // Attributes
+    private string _type;
+    private string _name;
     private string _description;
     private int _points;
 
-    public Goal(string name, string description, int points)
+
+    // Constructors
+    public Goal(string type, string name, string description, int points)
     {
-        _shortName = name;
+        _type = type;
+        _name = name;
         _description = description;
         _points = points;
     }
-
-    public abstract void RecordEvent();
-    public abstract bool IsComplete();
-    public virtual string GetDetailsString()
+    public string GetType()
     {
-        return "";
+        return _type;
     }
-    public abstract string GetStringRepresentation();
+    public string GetName()
+    {
+        return _name;
+    }
+    public string GetDescription()
+    {
+        return _description;
+    }
+    public int GetPoints()
+    {
+        return _points;
+    }
+
+
+    // Methods
+    public abstract void ListGoal(int i);
+    public abstract string SaveGoal();
+    public abstract string LoadGoal();
+    public abstract void RecordGoalEvent(List<Goal> goals);
+
 }

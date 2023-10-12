@@ -1,37 +1,92 @@
+using System;
+
 public class ChecklistGoal : Goal
 {
-    private int _amountCompleted;
-    private int target;
-    private int bonus;
 
-    public ChecklistGoal(string name, string description, int points, int target, int bonus)
-        : base(name, description, points)
+    private string _type = "Check List Goal: ";
+    private int _numberTimes;
+    private int _bonusPoints;
+    private bool _status;
+    private int _count;
+
+
+
+    public ChecklistGoal(string type, string name, string description, int points, int numberTimes, int bonusPoints) : base(type, name, description, points)
     {
-        this.target = target;
-        this.bonus = bonus;
-        // You can initialize other fields here if needed.
+        _status = false;
+        _numberTimes = numberTimes;
+        _bonusPoints = bonusPoints;
+        _count = 0;
+    }
+    public ChecklistGoal(string type, string name, string description, int points, bool status, int numberTimes, int bonusPoints, int count) : base(type, name, description, points)
+    {
+        _status = status;
+        _numberTimes = numberTimes;
+        _bonusPoints = bonusPoints;
+        _count = count;
     }
 
-    public override void RecordEvent()
+    public int GetTimes()
     {
-        // Implement the logic to record an event for the checklist goal.
+        return _numberTimes;
+    }
+    public void SetTimes()
+    {
+        _count = _count + 1;
+    }
+    public int GetCount()
+    {
+        return _count;
+    }
+    public void SetCount()
+    {
+
+    }
+    public int GetBonusPoints()
+    {
+        return _bonusPoints;
+    }
+    public Boolean Finished()
+    {
+        return _status;
     }
 
-    public override bool IsComplete()
+    public override void ListGoal(int i)
     {
-        // Implement the logic to check if the checklist goal is complete.
-        return false; // Placeholder return value.
+        if (Finished() == false)
+        {
+            Console.WriteLine($"{i}. [ ] {GetName()} ({GetDescription()})  --  Currently Completed: {GetCount()}/{GetTimes()}");
+        }
+        else if (Finished() == true)
+        {
+            Console.WriteLine($"{i}. [X] {GetName()} ({GetDescription()})  --  Completed: {GetCount()}/{GetTimes()}");
+        }
+
+    }
+    public override string SaveGoal()
+    {
+        return ($"{_type}; {GetName()}; {GetDescription()}; {GetPoints()}; {_status}; {GetTimes()}; {GetBonusPoints()}; {GetCount()}");
+    }
+    public override string LoadGoal()
+    {
+        return ($"Simple Goal:; {GetName()}; {GetDescription()}; {GetPoints()}; {_status}; {GetTimes()}; {GetBonusPoints()}; {GetCount()}");
+    }
+    public override void RecordGoalEvent(List<Goal> goals)
+    {
+        SetTimes();
+        int points = GetPoints();
+
+        if (_count == _numberTimes)
+        {
+            _status = true;
+            points = points + _bonusPoints;
+
+            Console.WriteLine($"You are doing great you have {points} points!");
+        }
+        else
+        {
+            Console.WriteLine($"You have achieved Your Goals and have {GetPoints()} points");
+        }
     }
 
-    public override string GetDetailsString()
-    {
-        // Implement the logic to get details as a string.
-        return "";
-    }
-
-    public override string GetStringRepresentation()
-    {
-        // Implement the logic to get a string representation.
-        return "";
-    }
 }

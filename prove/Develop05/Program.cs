@@ -1,58 +1,108 @@
-using System;
 
+using System;
+using System.IO;
+using System.Globalization;
 class Program
 {
     static void Main(string[] args)
+
     {
-        string choice = "0";
-        do
+        GoalManagement goals = new GoalManagement();
+
+        Console.Clear();
+        Console.WriteLine("Eternal Quest Goals For Now and Beyond");
+        Console.WriteLine($"Point Total {goals.GetTotalPoints()}");
+        MainMenu mainMenu = new MainMenu();
+        GoalMenu goalMenu = new GoalMenu();
+
+        int selection = 0;
+        while (selection != 6)
+
         {
-            Console.WriteLine("Menu Options:");
-            Console.WriteLine("1. Create New Goal");
-            Console.WriteLine("2. List Goals");
-            Console.WriteLine("3. Save Goals");
-            Console.WriteLine("4. Load Goals");
-            Console.WriteLine("5. Record Event");
-            Console.WriteLine("6. Quit");
-            Console.Write("Your choice from the menu: ");
-            choice = Console.ReadLine();
-            if (choice == "1")
+            selection = mainMenu.UserChoice();
+            switch (selection)
+
             {
-                Console.WriteLine("You chose create a new goal");
-                GoalManager manager = new GoalManager();
-                manager.CreateGoal();
+                case 1:
+                    Console.Clear();
+                    int goalInput = 0;
+                    while (goalInput != 5)
+                    {
+                        goalInput = goalMenu.GoalChoice();
+                        switch (goalInput)
+                        {
+                            case 1://SimpleGoal
+                                Console.WriteLine("Give your goal a name");
+                                string name = Console.ReadLine();
+                                Console.WriteLine("Describe your goal");
+                                string description = Console.ReadLine();
+                                Console.WriteLine("List the points for this goal");
+                                int points = int.Parse(Console.ReadLine());
+                                SimpleGoal sGoal = new SimpleGoal("Simple Goal:", name, description, points);
+                                goals.AddGoal(sGoal);
+                                goalInput = 5;
+                                break;
+                            case 2://Eternal Goal
+                                Console.WriteLine("Give your goal a name");
+                                name = Console.ReadLine();
+                                Console.WriteLine("Describe your goal");
+                                description = Console.ReadLine();
+                                Console.WriteLine("List the points for this goal");
+                                points = int.Parse(Console.ReadLine());
+                                EternalGoal eGoal = new EternalGoal("Eternal Goal:", name, description, points);
+                                goals.AddGoal(eGoal);
+                                goalInput = 5;
+                                break;
+                            case 3:// Checklist Goal
+                                Console.WriteLine("Give your goal a name");
+                                name = Console.ReadLine();
+                                Console.WriteLine("Describe your goal");
+                                description = Console.ReadLine();
+                                Console.WriteLine("List the points for this goal");
+                                points = int.Parse(Console.ReadLine());
+                                Console.WriteLine("You will get a bonus if you complete it how many times?");
+                                int bonusTimes = int.Parse(Console.ReadLine());
+                                Console.WriteLine("How many bonus points will you earn from this goals?");
+                                int xtraPoints = int.Parse(Console.ReadLine());
+                                ChecklistGoal checkGoal = new ChecklistGoal("Check List Goal:", name, description, points, bonusTimes, xtraPoints);
+                                goals.AddGoal(checkGoal);
+                                goalInput = 5;
+                                break;
+                            default:
+                                Console.WriteLine("Enter a valid option");
+                                break;
+                        }
+                    }
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write($"\n*** You currently have {goals.GetTotalPoints()} points! ***\n");
+                    goals.ListGoals();
+                    break;
+                case 3:
+
+                    goals.SaveGoals();
+                    break;
+                case 4:
+
+                    Console.Clear();
+                    Console.Write($"\n*** You currently have {goals.GetTotalPoints()} points! ***\n");
+                    goals.LoadGoals();
+                    break;
+                case 5:
+
+                    Console.Clear();
+                    Console.Write($"You have {goals.GetTotalPoints()} points");
+                    goals.RecordGoalEvent();
+                    break;
+                case 6:
+
+                    Console.WriteLine("Thank You and Good Bye!");
+                    break;
+                default:
+                    Console.WriteLine($"Enter a Valid Option");
+                    break;
             }
-            else if (choice == "2")
-            {
-                Console.WriteLine("You chose to list your goals");
-                //StartReflectingActivity();
-            }
-            else if (choice == "3")
-            {
-                Console.WriteLine("You chose to save your goals");
-                //StartListingActivity();
-                GoalManager manager = new GoalManager();
-                manager.SaveGoals();
-            }
-
-            else if (choice == "4")
-            {
-                Console.WriteLine("You chose to load your goals");
-                GoalManager manager = new GoalManager();
-                manager.LoadGoals();
-            }
-
-            else if (choice == "5")
-            {
-                Console.WriteLine("You chose to record an event");
-                //StartListingActivity();
-            }
-
-
-
-
-        } while (choice != "6");
-        Console.WriteLine("Goodbye!");
-
+        }
     }
 }

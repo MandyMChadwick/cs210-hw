@@ -1,101 +1,143 @@
-using System.Runtime.CompilerServices;
+using System;
+using System.IO;
 
-public class GoalManager
+public class GoalManagement
 
 {
-    public List<Goal> goals;
-    private int _score;
+    // Attributes
+    private List<Goal> _goals = new List<Goal>();
+    private int _totalPoints;
 
-    public GoalManager()
+
+    // Constructors
+    public GoalManagement()
     {
-        // Initialize the goals list in the constructor.
-        goals = new List<Goal>();
+        _totalPoints = 0;
+    }
+    public void AddGoal(Goal goal)
+    {
+        _goals.Add(goal);
+    }
+    public int GetTotalPoints()
+    {
+        return _totalPoints;
+    }
+    public void AddPoints(int points)
+    {
+        _totalPoints += points;
+    }
+    public void AddBonus(int bonusPoints)
+    {
+        _totalPoints += bonusPoints;
+    }
+    public void SetTotalPoints(int totalPoints)
+    {
+        _totalPoints = totalPoints;
+    }
+    public List<Goal> GetGoalsList()
+    {
+        return _goals;
     }
 
-
-    public void CreateGoal()
-
+    // Methods
+    public void ListGoals()
     {
-
-        Console.Write("Enter the goal name: ");
-        string name = Console.ReadLine();
-        Console.Write("Enter the goal description: ");
-        string description = Console.ReadLine();
-        Console.Write("Enter the goal points: ");
-        int points;
-        if (int.TryParse(Console.ReadLine(), out points))
+        if (_goals.Count() > 0)
         {
-            Goal newGoal = new SimpleGoal(name, description, points);
-            goals.Add(newGoal);
-            Console.WriteLine("Goal created successfully!");
+            Console.WriteLine("Your Goals:");
+
+            int index = 1;
+            // Loop though goals list
+            foreach (Goal goal in _goals)
+            {
+                goal.ListGoal(index);
+                index = index + 1;
+            }
         }
         else
         {
-            Console.WriteLine("Goal creation failed.");
+            Console.WriteLine("You have no goals");
         }
     }
-
-
-    public void DisplayPlayerInfo()
+    public void RecordGoalEvent()
     {
+        ListGoals();
 
-    }
-    public void ListGoalNames()
-    {
+        Console.Write("What did you accomplish?");
+        int select = int.Parse(Console.ReadLine()) - 1;
 
-    }
-    public void ListGoalDetails()
-    {
+        int goalPoints = GetGoalsList()[select].GetPoints();
+        AddPoints(goalPoints);
 
-    }
-    public void RecordEvent()
-    {
-        // Console.Write("Enter the goal name you want to record an event for: ");
-        //  string name = Console.ReadLine();
-        // Goal goal = goals.Add;
+        GetGoalsList()[select].RecordGoalEvent(_goals);
 
-
+        Console.WriteLine($"You have{GetTotalPoints()} points!");
     }
     public void SaveGoals()
     {
-        using (StreamWriter writer = new StreamWriter("goals.txt"))
+        Console.Write("Name your file");
+        string userInput = Console.ReadLine();
+        string userFileName = userInput + ".txt";
+
+        using (StreamWriter outputFile = new StreamWriter(userFileName))
         {
-            foreach (Goal goal in goals)
+
+            outputFile.WriteLine(GetTotalPoints());
+
+            foreach (Goal goal in _goals)
             {
-                writer.WriteLine(goal.GetStringRepresentation());
+                outputFile.WriteLine(goal.SaveGoal());
             }
         }
-        Console.WriteLine("Goals saved to goals.txt");
     }
+
     public void LoadGoals()
     {
-        if (File.Exists("goals.csv"))
+        Console.Write("What is your file name?");
+        string userInput = Console.ReadLine();
+        string userFileName = userInput + ".txt";
+
+        if (File.Exists(userFileName))
         {
-            goals.Clear();
-            using (StreamReader reader = new StreamReader("goals.csv"))
+            string[] readText = File.ReadAllLines(userFileName);
+
+            int totalPoints = int.Parse(readText[0]);
+            SetTotalPoints(totalPoints);
+
+            readText = readText.Skip(1).ToArray();
+
+            foreach (string line in readText)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                string[] entries = line.Split("; ");
+
+                string type = entries[0];
+                string name = entries[1];
+                string description = entries[2];
+                int points = int.Parse(entries[3]);
+                bool status = Convert.ToBoolean(entries[4]);
+
+                if (entries[0] == "Simple Goal:")
                 {
-                    string[] parts = line.Split(',');
-                    if (parts.Length == 4)
-                    {
-                        string name = parts[0];
-                        string description = parts[1];
-                        int points = int.Parse(parts[2]);
-                        bool isComplete = bool.Parse(parts[3]);
-                        Goal goal = new SimpleGoal(name, description, points);
-                        //   goal.SetCompletion(isComplete);
-                        goals.Add(goal);
-                    }
+                    SimpleGoal sGoal = new SimpleGoal(type, name, description, points, status);
+                    AddGoal(sGoal);
                 }
+                if (entries[0] == "Eternal Goal:")
+                {
+                    EternalGoal eGoal = new EternalGoal(type, name, description, points, status);
+                    AddGoal(eGoal);
+                }
+                if (entries[0] == "Check List Goal:")
+                {
+                    int numberTimes = int.Parse(entries[5]);
+                    int bonusPoints = int.Parse(entries[6]);
+                    int counter = int.Parse(entries[7]);
+                    ChecklistGoal clGoal = new ChecklistGoal(type, name, description, points, status, numberTimes, bonusPoints, counter);
+                    AddGoal(clGoal);
+                }
+
             }
-            Console.WriteLine("Goals loaded from goals.csv");
-        }
-        else
-        {
-            Console.WriteLine("No saved goals found.");
         }
     }
+
 
 }
