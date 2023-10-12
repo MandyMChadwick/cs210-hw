@@ -23,11 +23,11 @@ public class SimpleGoal : Goal
     {
         if (Finished() == false)
         {
-            Console.WriteLine($"{i}. [ ] {GetName()} ({GetDescription()})");
+            Console.WriteLine($"{i}. Simple Goal: [ ] {GetName()} ({GetDescription()})");
         }
         else if (Finished() == true)
         {
-            Console.WriteLine($"{i}. [X] {GetName()} ({GetDescription()})");
+            Console.WriteLine($"{i}. [X] Simple Goal:  {GetName()} ({GetDescription()})");
         }
     }
     public override string SaveGoal()

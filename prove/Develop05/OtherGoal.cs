@@ -27,7 +27,7 @@ public class OtherGoal : Goal
         }
         else if (Finished() == true)
         {
-            Console.WriteLine($"{i}. [X] {GetName()} ({GetDescription()})");
+            Console.WriteLine($"{i}. [X] Other Goal: {GetName()} ({GetDescription()})");
         }
     }
     public override string SaveGoal()

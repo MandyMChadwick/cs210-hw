@@ -55,11 +55,11 @@ public class ChecklistGoal : Goal
     {
         if (Finished() == false)
         {
-            Console.WriteLine($"{i}. [ ] {GetName()} ({GetDescription()})  --  Currently Completed: {GetCount()}/{GetTimes()}");
+            Console.WriteLine($"{i}. [ ] Check list Goal: {GetName()} ({GetDescription()})  --  Currently Completed: {GetCount()}/{GetTimes()}");
         }
         else if (Finished() == true)
         {
-            Console.WriteLine($"{i}. [X] {GetName()} ({GetDescription()})  --  Completed: {GetCount()}/{GetTimes()}");
+            Console.WriteLine($"{i}. [X] Check list Goal: {GetName()} ({GetDescription()})  --  Completed: {GetCount()}/{GetTimes()}");
         }
 
     }
