@@ -10,7 +10,9 @@ class Program
         GoalManagement goals = new GoalManagement();
 
         Console.Clear();
+        Console.WriteLine("****************************************");
         Console.WriteLine("Eternal Quest Goals For Now and Beyond");
+        Console.WriteLine("****************************************");
         Console.WriteLine($"Point Total {goals.GetTotalPoints()}");
         MainMenu mainMenu = new MainMenu();
         GoalMenu goalMenu = new GoalMenu();
