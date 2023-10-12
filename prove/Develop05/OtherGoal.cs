@@ -23,7 +23,7 @@ public class OtherGoal : Goal
     {
         if (Finished() == false)
         {
-            Console.WriteLine($"{i}. [ ] {GetName()} ({GetDescription()})");
+            Console.WriteLine($"{i}. [ ] Other Goal: {GetName()} ({GetDescription()})");
         }
         else if (Finished() == true)
         {

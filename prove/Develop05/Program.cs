@@ -75,7 +75,8 @@ class Program
                                 description = Console.ReadLine();
                                 Console.WriteLine("List the points for this goal");
                                 points = int.Parse(Console.ReadLine());
-                                OtherGoal otherGoal = new OtherGoal("Check List Goal:", name, description, points);
+                                //   OtherGoal otherGoal = new OtherGoal("Check List Goal:", name, description, points");
+                                OtherGoal otherGoal = new OtherGoal("Other Goal:", name, description, points);
                                 goals.AddGoal(otherGoal);
                                 goalInput = 5;
                                 break;
