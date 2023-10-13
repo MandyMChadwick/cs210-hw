@@ -1,0 +1,2 @@
+public class Swimming : Activity
+{ }
