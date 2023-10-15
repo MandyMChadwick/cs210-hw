@@ -15,10 +15,7 @@ public abstract class Goal
         _points = points;
 
     }
-    public string GetType()
-    {
-        return _type;
-    }
+
     public string GetName()
     {
         return _name;

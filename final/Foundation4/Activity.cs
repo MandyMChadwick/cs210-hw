@@ -4,24 +4,60 @@ public abstract class Activity
 {
     private string _date;
     private int _lengthMinutes;
-    public int Speed()
-    {
-        return 0;
-    }
-    public int Distance()
-    {
-        return 0;
-    }
+
+    private int _distance;
     public int Pace()
     {
         return 0;
-    }
 
-    public int Summary(int distance, int speed, int pace)
+    }
+    public Activity(string date, int lengthMinutes, int distance)
     {
-        return 0;
+        _date = date;
+        _lengthMinutes = lengthMinutes;
+
+        _distance = distance;
+
     }
 
+    public string getDate()
+
+    {
+        DateTime localDate = DateTime.Now;
+        string localDateString = localDate.ToString();
+
+        return localDateString;
+
+    }
+
+    public int getlengthMinutes()
+
+    {
+        return _lengthMinutes;
+
+    }
+    public int getSpeed()
+    {
+        return _distance / _lengthMinutes;
+    }
+    public int getDistance()
+    {
+        return _distance;
+    }
+
+
+    public string DisplayStartingMessage()
+    {
+
+
+        DateTime localDate = DateTime.Now;
+
+
+        return $"Welcome to our exercize Application! {localDate}";
+
+    }
+
+    public abstract string Summary();
 
 
 
