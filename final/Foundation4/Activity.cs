@@ -45,6 +45,6 @@ public abstract class Activity
         return $"Welcome to our exercise Application! {localDate}";
     }
 
-    public abstract int getDistance();
+    public abstract float getDistance();
     public abstract string Summary();
 }

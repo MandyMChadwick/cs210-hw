@@ -1,13 +1,13 @@
 public class Swimming : Activity
 {
-    private int _laps;
+    private float _laps;
 
-    public Swimming(string date, int lengthMinutes, int laps) : base(date, lengthMinutes)
+    public Swimming(string date, int lengthMinutes, float laps) : base(date, lengthMinutes)
     {
         _laps = laps;
     }
 
-    public override int getDistance()
+    public override float getDistance()
     {
         // Custom logic to calculate distance based on laps
         return _laps * 50 / 1000;
@@ -15,6 +15,6 @@ public class Swimming : Activity
 
     public override string Summary()
     {
-        return $"{getDate()} Swimming ({getLengthMinutes()} min) - Distance {getDistance()} meters, Speed {Speed} m/s, Pace: {Pace:F2} min/100m";
+        return $"{getDate()} Swimming ({getLengthMinutes()} min) - Distance {getDistance()} meters, Speed {Speed}, Pace: {Pace} ";
     }
 }

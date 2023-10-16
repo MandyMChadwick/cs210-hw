@@ -7,7 +7,7 @@ public class StationaryBicycles : Activity
         _distance = distance;
     }
 
-    public override int getDistance()
+    public override float getDistance()
     {
 
         return _distance;
