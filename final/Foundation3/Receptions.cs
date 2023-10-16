@@ -17,6 +17,6 @@ public class Receptions : Event
 
     public override string DisplayFullDetail()
     {
-        return base.DisplayFullDetail() + $"\nemail: {_email}";
+        return base.DisplayFullDetail() + $"\n RSVP at: {_email}";
     }
 }
