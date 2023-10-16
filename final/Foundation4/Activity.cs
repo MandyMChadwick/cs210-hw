@@ -1,64 +1,50 @@
-using System.Reflection.Metadata.Ecma335;
+using System;
 
 public abstract class Activity
 {
     private string _date;
     private int _lengthMinutes;
 
-    private int _distance;
-    public int Pace()
-    {
-        return 0;
-
-    }
-    public Activity(string date, int lengthMinutes, int distance)
+    public Activity(string date, int lengthMinutes)
     {
         _date = date;
         _lengthMinutes = lengthMinutes;
-
-        _distance = distance;
-
     }
 
     public string getDate()
-
     {
-        DateTime localDate = DateTime.Now;
-        string localDateString = localDate.ToString();
-
-        return localDateString;
-
+        return _date;
     }
 
-    public int getlengthMinutes()
-
+    public int getLengthMinutes()
     {
         return _lengthMinutes;
-
-    }
-    public int getSpeed()
-    {
-        return _distance / _lengthMinutes;
-    }
-    public int getDistance()
-    {
-        return _distance;
     }
 
+    public double Speed
+    {
+        get
+        {
+            // Calculate speed in miles per hour (mph)
+            return getDistance() / (_lengthMinutes / 60.0);
+        }
+    }
+
+    public double Pace
+    {
+        get
+        {
+            // Calculate pace in minutes per mile
+            return (_lengthMinutes / (double)getDistance());
+        }
+    }
 
     public string DisplayStartingMessage()
     {
-
-
         DateTime localDate = DateTime.Now;
-
-
-        return $"Welcome to our exercize Application! {localDate}";
-
+        return $"Welcome to our exercise Application! {localDate}";
     }
 
+    public abstract int getDistance();
     public abstract string Summary();
-
-
-
 }

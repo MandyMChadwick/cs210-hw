@@ -1,14 +1,20 @@
 public class StationaryBicycles : Activity
 {
+    private int _distance;
 
+    public StationaryBicycles(string date, int lengthMinutes, int distance) : base(date, lengthMinutes)
+    {
+        _distance = distance;
+    }
 
-    public StationaryBicycles(string date, int lengthMinutes, int distance) : base(date, lengthMinutes, distance)
-
+    public override int getDistance()
     {
 
+        return _distance;
     }
+
     public override string Summary()
     {
-        return $"{getDate()} Stationary Bike  {getlengthMinutes()} Distance, Speed {getSpeed()}{getDistance()} Pace: {getSpeed()} min per mile";
+        return $"{getDate()} Stationary Bike ({getLengthMinutes()} min) - Distance {getDistance()} miles, Speed {Speed} mph, Pace: {Pace} min/mile";
     }
 }
