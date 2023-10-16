@@ -30,14 +30,12 @@ public abstract class Activity
         }
     }
 
-    public double Pace()
+    public string Pace()
     {
-
-        {
-
-            return (_lengthMinutes / getDistance());
-        }
+        double pace = _lengthMinutes / getDistance();
+        return $"{pace:F2}"; // "{pace:F2}" specifies two decimal places
     }
+
 
     public string DisplayStartingMessage()
     {

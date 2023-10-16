@@ -15,6 +15,6 @@ public class Swimming : Activity
 
     public override string Summary()
     {
-        return $"{getDate()} Swimming ({getLengthMinutes()} min) - Distance {getDistance()} meters, Speed {Speed()} meters per hour, Pace: {Pace() * 1000} meters a minute";
+        return $"{getDate()} Swimming ({getLengthMinutes()} min) - Distance {getDistance()} meters, Speed {Speed()} meters per hour, Pace: {Pace()} kilometers a minute";
     }
 }
