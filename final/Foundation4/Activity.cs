@@ -33,7 +33,7 @@ public abstract class Activity
     public string Pace()
     {
         double pace = _lengthMinutes / getDistance();
-        return $"{pace:F2}"; // "{pace:F2}" specifies two decimal places
+        return $"{pace:F2}";
     }
 
 
