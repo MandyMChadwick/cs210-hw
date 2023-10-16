@@ -10,11 +10,11 @@ public class Swimming : Activity
     public override float getDistance()
     {
 
-        return _laps * 50 / 1000;
+        return _laps * 50;
     }
 
     public override string Summary()
     {
-        return $"{getDate()} Swimming ({getLengthMinutes()} min) - Distance {getDistance()} meters, Speed {Speed()}, Pace: {Pace()} ";
+        return $"{getDate()} Swimming ({getLengthMinutes()} min) - Distance {getDistance()} meters, Speed {Speed()} meters per hour, Pace: {Pace() * 1000} meters a minute";
     }
 }
