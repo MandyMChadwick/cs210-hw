@@ -1,11 +1,22 @@
+using System;
+
 public class Receptions : Event
 {
-
-
     private string _email;
 
-    Receptions(string email, string type, string title, string description, string date, string time, string weather, string address) : base(type, title, description, date, time, address)
+    public Receptions(string type, string title, string description, string date, string time, string address, string email)
+        : base(type, title, description, date, time, address)
     {
         _email = email;
+    }
+
+    public string RSVPInfo()
+    {
+        return $"RSVP for {_title}: Send an email to {_email}";
+    }
+
+    public override string DisplayFullDetail()
+    {
+        return base.DisplayFullDetail() + $"\nemail: {_email}";
     }
 }
