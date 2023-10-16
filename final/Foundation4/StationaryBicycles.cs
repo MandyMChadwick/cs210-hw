@@ -15,6 +15,6 @@ public class StationaryBicycles : Activity
 
     public override string Summary()
     {
-        return $"{getDate()} Stationary Bike ({getLengthMinutes()} min) - Distance {getDistance()} miles, Speed {Speed} mph, Pace: {Pace} min/mile";
+        return $"{getDate()} Stationary Bike ({getLengthMinutes()} min) - Distance {getDistance()} miles, Speed {Speed()} mph, Pace: {Pace()} min/mile";
     }
 }

@@ -21,21 +21,21 @@ public abstract class Activity
         return _lengthMinutes;
     }
 
-    public double Speed
+    public double Speed()
     {
-        get
+
         {
-            // Calculate speed in miles per hour (mph)
+
             return getDistance() / (_lengthMinutes / 60.0);
         }
     }
 
-    public double Pace
+    public double Pace()
     {
-        get
+
         {
-            // Calculate pace in minutes per mile
-            return (_lengthMinutes / (double)getDistance());
+
+            return (_lengthMinutes / getDistance());
         }
     }
 
