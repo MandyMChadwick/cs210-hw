@@ -3,36 +3,31 @@
 @page
 @model IndexModel
 
-<select id="idList">
-    <option value="1">ID 1</option>
-    <option value="2">ID 2</option>
-    <option value="3">ID 3</option>
-    <!-- Add more options as needed -->
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+public class IndexModel : PageModel
+{
+    public List<string> FileList { get; set; }  // Replace with your actual model
+
+    public void OnGet()
+    {
+        // Populate FileList with your model data
+        FileList = GetFileList();  // Implement this method to get your file list
+    }
+}
+
+
+
+
+
+
+
+<select id="idSelector">
+    @foreach (var item in Model.FileList)
+    {
+        <option value="@item">@item</option>
+    }
 </select>
 
-<button id="getDataButton">Get Data</button>
-
-<div id="result"></div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#getDataButton').click(function () {
-            var selectedId = $('#idList').val(); // Get the selected ID from the list
-
-            $.ajax({
-                type: 'GET',
-                url: '/GetData', // Replace with your endpoint
-                data: { id: selectedId }, // Pass the selected ID in the AJAX request
-                success: function (data) {
-                    $('#result').html(data); // Display the received data in a result container
-                },
-                error: function () {
-                    $('#result').html('Error fetching data.'); // Display an error message if the AJAX call fails
-                }
-            });
-        });
-    });
-</script>
 
 */
